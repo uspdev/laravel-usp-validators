@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Uspdev\\ValidatorProvide"
+                "Uspdev\\ValidatorProvider"
             ]
         }
     },
