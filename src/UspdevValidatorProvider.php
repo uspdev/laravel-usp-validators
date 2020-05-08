@@ -32,7 +32,7 @@ class UspdevValidatorProvider extends ServiceProvider
     {
         return [
             'codpes' => 'Não é um número USP válido',
-            'graducao' => 'Não é um número USP não é de uma aluno(a) de graduação',
+            'graduacao' => 'Número USP não é de um(a) aluno(a) de graduação',
         ];
     }
 
