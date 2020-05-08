@@ -4,7 +4,7 @@ namespace Uspdev;
 
 use Illuminate\Support\ServiceProvider;
 
-class ValidatorProvider extends ServiceProvider
+class UspdevValidatorProvider extends ServiceProvider
 {
 
     /**
@@ -32,6 +32,7 @@ class ValidatorProvider extends ServiceProvider
     {
         return [
             'codpes' => 'Não é um número USP válido',
+            'graducao' => 'Não é um número USP não é de uma aluno(a) de graduação',
         ];
     }
 
