@@ -24,7 +24,7 @@ class UspdevValidatorProvider extends ServiceProvider
         $this->app['validator']->resolver(function ($translator, $data, $rules, $messages, $customAttributes)
         {
             $messages += $this->getMessages();
-            return new Validator($translator, $data, $rules, $messages, $customAttributes);
+            return new UspdevValidator($translator, $data, $rules, $messages, $customAttributes);
         });
     }
 

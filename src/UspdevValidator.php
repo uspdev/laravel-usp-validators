@@ -6,7 +6,7 @@ use Illuminate\Validation\Validator as BaseValidator;
 use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Graducao;
 
-class Validator extends BaseValidator
+class UspdevValidator extends BaseValidator
 {
     protected function validateCodpes($attribute, $value)
     {
