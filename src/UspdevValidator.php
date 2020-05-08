@@ -4,7 +4,7 @@ namespace Uspdev;
 
 use Illuminate\Validation\Validator as BaseValidator;
 use Uspdev\Replicado\Pessoa;
-use Uspdev\Replicado\Graducao;
+use Uspdev\Replicado\Graduacao;
 
 class UspdevValidator extends BaseValidator
 {
