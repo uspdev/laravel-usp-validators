@@ -2,13 +2,13 @@
 
 namespace Uspdev;
 
-use Illuminate\Validation\Validator as BaseValidator;
+use Illuminate\Support\Facades\Validator as BaseValidator;
 use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Graduacao;
 
 class UspdevValidator extends BaseValidator
 {
-    protected function validateCodpes($attribute, $value)
+    public function codpes($attribute, $value, $parameters)
     {
        if (!(is_numeric(trim($value)))) {
             return false;
@@ -19,7 +19,7 @@ class UspdevValidator extends BaseValidator
         return true;
     }
 
-    protected function validateGraduacao($attribute, $value) {
+    public function graduacao($attribute, $value) {
         /* Enquanto não corrigimos o replicado para pegar a unidade
          * pela variavél de ambiente, vou fixar essa validação na FFLCH
          * */

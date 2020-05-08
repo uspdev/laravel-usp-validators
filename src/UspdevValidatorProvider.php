@@ -3,54 +3,22 @@
 namespace Uspdev;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class UspdevValidatorProvider extends ServiceProvider
 {
-
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->app['validator']->resolver(function ($translator, $data, $rules, $messages, $customAttributes)
-        {
-            $messages += $this->getMessages();
-            return new UspdevValidator($translator, $data, $rules, $messages, $customAttributes);
-        });
-    }
-
-    protected function getMessages()
-    {
-        return [
-            'codpes' => 'Não é um número USP válido',
-            'graduacao' => 'Número USP não é de um(a) aluno(a) de graduação',
-        ];
-    }
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register(){}
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
+    public function boot()
     {
-        return array();
-    }
+        Validator::extend('codpes', '\Uspdev\UspdevValidator@codpes');
+        Validator::replacer('codpes', function ($message, $attribute, $rule, $parameters) {
+            return 'Número USP não é válido';
+        });
 
+        Validator::extend('graduacao', '\Uspdev\UspdevValidator@graduacao');
+        Validator::replacer('graduacao', function ($message, $attribute, $rule, $parameters) {
+            return 'Este número USP não é de um(a) aluno(a) de graduação';
+        });
+    }
 }
