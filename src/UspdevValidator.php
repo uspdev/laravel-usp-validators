@@ -5,6 +5,7 @@ namespace Uspdev;
 use Illuminate\Support\Facades\Validator as BaseValidator;
 use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Graduacao;
+use Uspdev\Replicado\Bempatrimoniado;
 
 class UspdevValidator extends BaseValidator
 {
@@ -20,9 +21,11 @@ class UspdevValidator extends BaseValidator
     }
 
     public function graduacao($attribute, $value) {
-        /* Enquanto não corrigimos o replicado para pegar a unidade
-         * pela variavél de ambiente, vou fixar essa validação na FFLCH
-         * */
-        return Graduacao::verifica($value, 8);
+        $unidade = getenv('REPLICADO_CODUNDCLG');
+        return Graduacao::verifica($value, $unidade);
+    }
+
+    public function patrimonio($attribute, $value) {
+        return Bempatrimoniado::verifica($value);
     }
 }
