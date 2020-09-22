@@ -6,6 +6,8 @@ Instalação:
 
     composer require uspdev/laravel-usp-validators
 
+Dependência: https://github.com/uspdev/replicado
+
 Validações:
 
 - codpes
