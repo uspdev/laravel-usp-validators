@@ -56,6 +56,13 @@ class UspdevValidator extends BaseValidator
         return Graduacao::verifica($value, $unidade);
     }
 
+    public function alunoconvenioint($attribute, $value, $parameters) {
+        if(empty(trim($value))) return true;
+
+        $unidade = getenv('REPLICADO_CODUNDCLG');
+        return Graduacao::verificarAlunoConvenioInt($value, $unidade);        
+    }
+
     public function patrimonio($attribute, $value, $parameters) {
         if(empty(trim($value))) return true;
 
