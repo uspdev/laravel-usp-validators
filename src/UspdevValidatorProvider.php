@@ -26,6 +26,11 @@ class UspdevValidatorProvider extends ServiceProvider
             return 'Este número USP não é de um(a) aluno(a) de graduação';
         });
 
+        Validator::extend('alunoconvenioint', '\Uspdev\UspdevValidator@alunoconvenioint');
+        Validator::replacer('alunoconvenioint', function ($message, $attribute, $rule, $parameters) {
+            return 'Este número USP não é de um(a) aluno(a) intercambista';
+        });
+
         Validator::extend('patrimonio', '\Uspdev\UspdevValidator@patrimonio');
         Validator::replacer('patrimonio', function ($message, $attribute, $rule, $parameters) {
             return 'Não é um número de patrimonio ativo';
